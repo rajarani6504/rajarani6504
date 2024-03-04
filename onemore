@@ -1,0 +1,285 @@
+
+
+clc; clear all; close    all; 
+% Define the parameters 
+A = 2;              
+t = 0:0.1:10;  
+ A * exp(alpha * t); 
+plot(t, x)
+ xlabel('Time') 
+ylabel('Amplitude')
+ title('Exponential Signal: 
+A * e^{(\alpha t)}') grid on
+............................................................................
+2-------unit step
+
+
+clc; clear all; 
+close all;   
+N=21; 
+clc; clear all; 
+close all; 
+N=21;
+x=ones(1,N); 
+n=0:1:N-1; 
+ stem(n,x); 
+xlabel('n'),ylabel('x(n)');
+title('Unit Step Sequence') 
+n=0:1:N-1; 
+ stem(n,x); 
+xlabel('n'),ylabel('x(n)'); 
+title('Unit Step Sequence') 
+...................................................................................
+3-----
+clc; clear all; 
+close all; 
+t	= -5:0.1:5; 
+% Generate the unit step signal 
+u	= heaviside(t); 
+plot(t, u) 
+xlabel('Time') 
+ylabel('Amplitude') 
+title('Unit Step Signal') grid on 
+.......................................................................................
+4-Unit impulse ---------------
+
+
+clc; 
+clear all; 
+close all; 
+t=-2:1:2;
+l y=[zeros(1,2), 
+ones(1,1), 
+zeros(1,2)]; 
+%plot 
+stem(t,y); 
+xlabel('Time') 
+ylabel('Amplitude') 
+title('Unit Impulse Signal') grid on 
+...............................................................................
+ i) Amplitude scaling 
+ 
+clc; 
+clear all;
+close all; 
+t = 0:0.01:2*pi;   
+% Time vector x_original = sin(t);  
+% Original signal (for example, a sine wave) 
+% Scaling factor scaling_factor = 2;  
+% Adjust this factor to scale the signal 
+% Perform amplitude scaling 
+x_scaled = scaling_factor * x_original; 
+% Plot the original and scaled signals 
+subplot(2, 1, 1) 
+plot(t, x_original) 
+xlabel('Time') 
+ylabel('Amplitude') 
+title('Original Signal') 
+subplot(2, 1, 2) 
+plot(t, x_scaled) 
+xlabel('Time') 
+ylabel('Amplitude') 
+title('Scaled Signal') 
+...............................................................................
+(ii) Addition of two signals 
+clc; 
+clear all; 
+close all; 
+t = 0:0.01:2*pi;    
+Time vector 
+x1 = sin(t); 
+% Signal 2 x2 = cos(t);    
+% Perform signal addition resultant_signal = x1 + x2; 
+% Plot the original signals and the resultant signal
+subplot(3, 1, 1) 
+plot(t, x1) 
+xlabel('Time') 
+ylabel('Amplitude') 
+title('Signal 1 (Sine Wave)') 
+subplot(3, 1, 2) 
+plot(t, x2) 
+xlabel('Time') 
+ylabel('Amplitude') 
+title('Signal 2 (Cosine Wave)') 
+subplot(3, 1, 3) 
+plot(t, resultant_signal) 
+xlabel('Time') 
+ylabel('Amplitude') 
+title('Resultant Signal (Sum of Signal 1 and Signal 2)') 
+................................................................................................
+(iii) Time shift 
+
+clc;
+clear all;
+close all; 
+t=0:0.01:8*pi 
+x=sin(t); 
+subplot(3,1,1)
+plot(t,x) 
+title('Simple Signal')
+xlabel('Time') 
+ylabel('Amplitude') 
+grid on;  
+y=sin(t/2) 
+subplot(3,1,2) 
+plot(t,y) 
+title('Expanded Signal') 
+xlabel('Time') 
+ylabel('Amplitude') 
+grid on; 
+%Compressed Signal
+z=sin(t*2)  
+subplot(3,1,3)
+plot(t,z) 
+title('Compressed Signal') 
+xlabel('Time/ The Engineering Projects') 
+ylabel('Amplitude')
+grid on; 
+............................................................................................
+(iii) Time reversal 
+clc;
+clear all; 
+close all; 
+t=0:0.001:10;
+x=sin(t); 
+subplot(2,1,1) 
+plot(t,x) t
+itle('Simple Signal') 
+xlabel('Time') 
+ylabel('Amplitude') g
+rid on; 
+%Time reversed signal 
+y=fliplr(x);
+subplot(2,1,2)
+plot(t,y) 
+title('Time reversal')
+xlabel('Time') 
+ylabel('Amplitude')
+grid on; 
+................................................................................................ 
+(i) 	Convolution Sum 
+clc;
+clear all; 
+close all; 
+% Define two signals 
+x = [1, 2, 3]; % Signal 1 
+h = [0.5, 1];   % Signal 2 
+% Initialize the result vector 
+N = length(x); 
+M = length(h); 
+y = zeros(1, N + M - 1); 
+% Perform convolution for
+n= 1:N+M-1     for 
+k = max(1, n-M+1):min(n, N)         
+y(n) = y(n) + x(k) * h(n - k + 1);     
+end end 
+disp('Convolution Result:');
+disp(y); 
+......................................................................................................
+(ii) 	Convolution Integral 
+clc;
+clear all; 
+close all; 
+% Define the time axis 
+t = 0:0.01:5; % Adjust the time step and range as needed 
+% Define the two continuous-time signals 
+x = sin(2*pi*t); % Signal 1 
+h = exp(-t);     % Signal 2 % Initialize the result vector 
+y = zeros(size(t)); 
+
+for i = 1:
+length(t)  
+j = 1:i         
+y(i) = y(i) + x(j) * h(i - j + 1);   
+end    
+y(i) = y(i) * (t(2) - t(1)); 
+figure;
+subplot(3,1,1);
+plot(t, x);
+title('Signal x(t)'); 
+subplot(3,1,2); 
+plot(t, h); 
+title('Signal h(t)');
+subplot(3,1,3);
+ plot(t, y); 
+ title('Convolution y(t)');
+ xlabel('Time'); 
+....................................................................................................
+	Write the Matlab code to DFT and IDFT of the signal. 
+ clc; 
+ clear all; 
+ close all; 
+ 
+% Define a sample signal 
+x = [20,-15,10,5,6]; 
+ 
+% Length of the signal 
+N = length(x); 
+% Initialize DFT matrix 
+W_N = exp(-2i * pi / N); 
+% Compute the DFT 
+X = zeros(1, N); for k = 1:N     for 
+n = 1:N 
+X(k) = X(k) + x(n) * W_N^((k-1)*(n-1));     
+end end 
+X = X / N; 
+W_N_inv = exp(2i * pi / N);  
+% Compute the IDFT
+x_reconstructed = zeros(1, N); 
+for n = 1:N     for
+k = 1:N 
+x_reconstructed(n) = x_reconstructed(n) + X(k) * W_N_inv^((k-1)*(n-1));     
+end end 
+% Display the original signal, DFT, and reconstructed signal (IDFT)
+disp('Original Signal:'); 
+disp(x); 
+disp('DFT:'); 
+disp(X);
+disp('Reconstructed Signal (IDFT):');
+disp(x_reconstructed); 
+%plot the signals figure; 
+subplot(3,1,1); stem(x); 
+title('Original Signal'); 
+subplot(3,1,2); stem(X); 
+title('DFT'); 
+subplot(3,1,3); 
+stem(x_reconstructed);
+title('Reconstructed Signal (IDFT)'); 
+xlabel('Time'); 
+ylabel('amplitude') 
+...............................................................................
+clc; clear all; 
+close all; 
+ 
+% Define a sample signal 
+x = [20,2,5,4]; 
+ 
+% Length of the signal 
+N = length(x); 
+% Frequency index that should correspond to the same frequency k1 = 2; 
+k2 = 2 + N;
+W_N = exp(-2i * pi / N);
+% Compute DFT for k1 
+X_k1 = 0; 
+ n = 1:N 
+ X_k1 = X_k1 + x(n) * W_N^((k1-1)*(n-1));
+end 
+% Compute DFT for
+k2 (using the periodicity property) 
+X_k2 = 0; for
+n = 1:N 
+X_k2 = X_k2 + x(n) * W_N^((k2-1)*(n-1));
+end 
+disp('Original Signal:');
+disp(x); 
+fprintf('DFT value at k = %d: %f\n', k1, X_k1); 
+fprintf('DFT value at k = %d (periodic): %f\n', 
+k2, X_k2); 
+..........................................................................
+
+
+
+
+
+
+
